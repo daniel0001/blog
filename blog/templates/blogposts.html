@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-9">
+        <button class="btn btn-default" id="new_post" onclick="location.href='{% url 'new_post' %}'">New Post</button>
+        {% for post in posts %}
+            <div class="row">
+                <hr>
+                <div class="col-md-2 col-sm-3 text-center">
+                    <a class="story-img" href="#">
+                        <img src="http://placehold.it/100" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+                    </a>
+                </div>
+                <div class="col-md-10 col-sm-9">
+                    <h3>{{ post.title }}</h3>
+                    <div class="row">
+                        <div class="col-xs-11">
+                            <p>{{ post.content|truncatewords:30 }}</p>
+                            <p><button class="btn btn-default" onclick="location.href='{% url 'post_detail' post.id %}'">Read More</button></p>
+                            <p>{{ post.published_date }} | <strong>Views</strong> {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-2">
+                <div id="top5">
+                    <h3>top 5 articles</h3>
+                    <hr>
+                    <ol>
+                        {% for post in top5 %}
+                        <li><a href="{% url 'post_detail' post.id %}">{{post.title}}</a></li>
+                        <hr>
+                        {% endfor %}
+                    </ol>
+            </div>
+    </div>
+</div>
+{% endblock %}

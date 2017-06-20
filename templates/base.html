@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+    <link rel='shortcut icon' type='image/x-icon' href='../../media/images/favicon.ico'/>
+    <title>AI Machine Mind</title>
+    <link rel="stylesheet" href="http://bootswatch.com/lumen/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic">
+
+</head>
+<body>
+
+ <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container" id="nav-container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Machine Mind</a>
+            
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="popular">Most Popular <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="popular">
+                {% for post in posts %}
+                    <li><a href="/{{ post.id }}">{{post.title}}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li>
+              <a href="#">Help</a>
+            </li>
+            <li>
+              <a href="../">About</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">AI <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="#">Hardware</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Wetware</a></li>
+          </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../admin" target="_blank">Admin Panel</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+      <div class="container-fluid" id="title">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-1">
+                <img src="/media/images/ai.png" height="170px"/>
+              </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <h1> Machine Mind
+                        <p id="logo" class="lead">Artificial Intelligence: Creation of our machine overlords</p>
+                    </h1>
+                </div>
+            </div>
+          </div>
+    </div>
+<div id="masthead">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="panel">
+                  <div class="panel-body">
+                      <!--blog entries-->
+                      {% block content %}
+                      {% endblock %}
+                      <!--blog entries-->
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>
+<footer>
+    <div class="container">
+    </div>
+</footer>
+<!-- script references -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<script src="{% static "js/navbar.js" %}"></script>
+</body>
+</html>
